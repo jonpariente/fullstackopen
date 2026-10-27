@@ -29,7 +29,7 @@ Note right of browser: User submits the form to create a new note
 
 browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
 activate server
-Note right of browser: Server saves the new note
+Note right of server: Server saves the new note
 server-->>browser: 302 Found (Location: /exampleapp/notes)
 deactivate server
 
