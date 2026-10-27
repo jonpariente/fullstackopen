@@ -1,0 +1,36 @@
+sequenceDiagram
+participant browser
+participant server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+activate server
+server-->>browser: HTML document
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+activate server
+server-->>browser: CSS file
+deactivate server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+activate server
+server-->>browser: JavaScript file
+deactivate server
+
+Note right of browser: Browser executes JavaScript
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+activate server
+server-->>browser: JSON array of notes
+deactivate server
+
+Note right of browser: Callback processes the response and renders notes
+Note right of browser: User submits the new note
+Note right of server: JavaScript sends an asynchronous POST request
+
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+activate server
+Note right of server: Server saves the new note
+server-->>browser: 201 Created
+Note right of browser: JavaScript adds the new note to the page
+deactivate server
