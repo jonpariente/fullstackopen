@@ -1,14 +1,8 @@
 const Total = ({ course }) => {
   const { parts } = course
-  let total = 0
-
-  parts.forEach(part => {
-    total += part.exercises
-  });
+  const total = parts.reduce((total, part) => total + part.exercises, 0)
   
-  return (
-    <strong>Total of {total} exercises </strong>
-  )
+  return <strong>Total of {total} exercises </strong>
 }
 
 export default Total
