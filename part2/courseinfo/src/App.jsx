@@ -4,15 +4,13 @@ const Content = (props) => (
   props.parts.map((part) => <Part key={part.id} part={part} />)
 )
 
-const Course = (props) => {
-  let total = 0;
-
-  props.course.parts.forEach((part) => total += part.exercises)
+const Course = ({ course }) => {
+  const total = course.parts.reduce((total, part) => total + part.exercises, 0)
   
   return (
     <div>
-      <Header course={props.course.name} />
-      <Content parts={props.course.parts} />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
       <Total total={total} />
     </div>
   )
